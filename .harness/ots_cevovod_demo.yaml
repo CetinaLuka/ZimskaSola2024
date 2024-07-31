@@ -1,0 +1,65 @@
+pipeline:
+  name: ots_cevovod_demo
+  identifier: ots_cevovod_demo
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: ghconnector
+        repoName: ZimskaSola2024
+        build: <+input>
+  stages:
+    - stage:
+        name: Build backend
+        identifier: Build_backend
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Powershell
+                    command: mvn -B package --file pom.xml -DskipTests
+    - stage:
+        name: test backend
+        identifier: test_backend
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: RunTests
+                  name: RunTests_1
+                  identifier: RunTests_1
+                  spec:
+                    language: Java
+                    buildTool: Maven
+                    args: clean test
+                    runOnlySelectedTests: true
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - reports.xml
+                    enableTestSplitting: false
