@@ -32,7 +32,7 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Powershell
-                    command: mvn -B package --file pom.xml -DskipTests
+                    command: backend/mvnw -B package --file pom.xml -DskipTests
     - stage:
         name: test backend
         identifier: test_backend
