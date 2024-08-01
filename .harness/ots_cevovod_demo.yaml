@@ -55,11 +55,9 @@ pipeline:
                 steps:
                   - step:
                       type: Run
-                      name: run fe build
-                      identifier: run_fe_build
+                      name: Run_fe_build
+                      identifier: Run_fe_build
                       spec:
-                        connectorRef: account.harnessImage
-                        image: node:20-alpine3.20
                         shell: Bash
                         command: |-
                           cd frontend
