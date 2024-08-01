@@ -31,6 +31,8 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
+                    connectorRef: account.harnessImage
+                    image: alpine/java:20-jdk
                     shell: Bash
                     command: |-
                       cd backend
