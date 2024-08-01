@@ -87,20 +87,11 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: RunTests
-                  name: RunTests_1
-                  identifier: RunTests_1
+                  type: Run
+                  name: backedn test
+                  identifier: backedn_test
                   spec:
-                    connectorRef: account.harnessImage
-                    image: alpine/java:20-jdk
-                    language: Java
-                    buildTool: Maven
-                    args: clean test
-                    runOnlySelectedTests: true
-                    preCommand: cd backend
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - reports.xml
-                    enableTestSplitting: false
+                    shell: Sh
+                    command: |-
+                      cd backend
+                      ./mvnw test
