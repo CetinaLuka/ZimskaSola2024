@@ -91,6 +91,8 @@ pipeline:
                   name: backedn test
                   identifier: backedn_test
                   spec:
+                    connectorRef: account.harnessImage
+                    image: alpine/java:20-jdk
                     shell: Sh
                     command: |-
                       cd backend
