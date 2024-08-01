@@ -55,6 +55,15 @@ pipeline:
                 steps:
                   - step:
                       type: Run
+                      name: install dependencies
+                      identifier: install_dependencies
+                      spec:
+                        shell: Sh
+                        command: |-
+                          cd frontend
+                          npm install
+                  - step:
+                      type: Run
                       name: Run_fe_build
                       identifier: Run_fe_build
                       spec:
