@@ -31,8 +31,10 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    shell: Powershell
-                    command: backend/mvnw -B package --file pom.xml -DskipTests
+                    shell: Bash
+                    command: |-
+                      cd backend
+                      ./mvnw -B package --file pom.xml -DskipTests
     - stage:
         name: test backend
         identifier: test_backend
