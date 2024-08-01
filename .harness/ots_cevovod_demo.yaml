@@ -57,10 +57,13 @@ pipeline:
                   name: RunTests_1
                   identifier: RunTests_1
                   spec:
+                    connectorRef: account.harnessImage
+                    image: alpine/java:20-jdk
                     language: Java
                     buildTool: Maven
                     args: clean test
                     runOnlySelectedTests: true
+                    preCommand: cd backend
                     reports:
                       type: JUnit
                       spec:
